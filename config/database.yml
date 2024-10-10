@@ -7,15 +7,15 @@ default: &default
 
 development:
   <<: *default
-  database: blogapp_development
+  database: taskapp_development
 
 test:
   <<: *default
-  database: blogapp_test
+  database: taskapp_test
 
 production:
   <<: *default
-  database: blogapp_production
-  username: blogapp
+  database: taskapp_production
+  username: taskapp
   password: <%= ENV['DATABASE_PASSWORD'] %>
   host: <%= ENV['DATABASE_HOST'] %>
