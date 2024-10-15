@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  # 社内アプリの為すべてのページに対してサインインを求める
+  before_action :authenticate_user!
   
   def index
     # 必要なロジックを記述
