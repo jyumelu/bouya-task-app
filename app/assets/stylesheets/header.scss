@@ -19,10 +19,13 @@ $avatar-size: 40px;
     }
 
     &_avatar {
-        margin: auto 0 auto auto;
         width: $avatar-size;
         height: $avatar-size;
         border-radius: 100%;
-      }
+    }
+
+    &_prof {
+        margin: auto 0 auto auto;
+    }
 
 }
