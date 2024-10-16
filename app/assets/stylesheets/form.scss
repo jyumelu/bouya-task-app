@@ -1,0 +1,23 @@
+@import './variables';
+
+input, select {
+  &.text {
+    width: 100%;
+    margin: 8px 0px;
+    padding: 16px 24px;
+    border: 1px solid #F4F4F4;
+    border-radius: 10px;
+  }
+}
+
+.field {
+  margin-top: 20px;
+}
+
+.actions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+}

@@ -1,0 +1,22 @@
+@import './variables';
+
+.btn-submit {
+    background-color: $submit-color;
+    border: none;
+    width: 100%;
+    text-align: center;
+    color: white;
+    padding: 16px 0;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.btn-secondary {
+    background-color: white;
+    border: solid 1px $submit-color;
+    width: 100%;
+    text-align: center;
+    color: $submit-color;
+    padding: 16px 0;
+    font-weight: bold;
+}
