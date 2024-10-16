@@ -1,0 +1,28 @@
+@import './variables';
+
+$avatar-size: 40px;
+
+.header {
+    display: flex;
+    text-align: center;
+    justify-self: space-between;
+    padding: 16px;
+    font-weight: bold;
+    border-bottom: dashed  1px black;
+
+    &_logs {
+        margin: 15px;
+    }
+
+    &_pageTitle {
+        font-size: 18px;
+    }
+
+    &_avatar {
+        margin: auto 0 auto auto;
+        width: $avatar-size;
+        height: $avatar-size;
+        border-radius: 100%;
+      }
+
+}

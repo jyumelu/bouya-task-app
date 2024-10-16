@@ -11,4 +11,10 @@
     %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
     %link{:href => "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", :rel => "stylesheet"}/
   %body
+    %header.header
+      .header_logs
+        %p.header_pageTitle
+          = link_to 'Boards', root_path
+      - if user_signed_in?
+        = image_tag "default-avatar.png", class: 'header_avatar dropbtn'
     = yield
