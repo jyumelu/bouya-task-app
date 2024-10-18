@@ -1,9 +1,11 @@
 class BoardsController < ApplicationController
+  before_action :authenticate_user!
 
-  belongs_to :tasks
+  def index
+    @boards = Board.all
+  end
 
-  # def boards
-  #   # 必要なロジックを記述
-  #   @boards = Board.all
-  # end
+  def show
+    @boards = Board.all
+  end
 end
