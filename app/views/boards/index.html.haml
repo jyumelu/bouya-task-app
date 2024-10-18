@@ -1,20 +1,22 @@
 .container
   %h2 All Boards
-
   - @boards.each do |board|
-    .board
-      .board_title
-        = board.title
-        .board_detailActions
-          .dropdown
-            = image_tag "combined-shape.png"
-            .dropdown-content.mini
-              = link_to 'Edit', root_path
-              = link_to 'Delete', root_path
-      .board_text 
-        = board.description
-      = image_tag "default-avatar.png", class: 'board_avatar'
-
+    = link_to board_path(board) do
+      .board
+        .board_title
+          = board.title
+          .board_detailActions
+            .dropdown
+              = image_tag "combined-shape.png"
+              .dropdown-content.mini
+                = link_to 'Edit', root_path
+                = link_to 'Delete', root_path
+        .board_text 
+          = board.description
+        = image_tag "default-avatar.png", class: 'board_avatar'
   .board_add
     + Add new Board
+  = link_to new_board_path do
+    .float_btn
+      %i.fa.fa-plus
 

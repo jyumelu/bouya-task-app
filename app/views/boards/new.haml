@@ -1,0 +1,20 @@
+.container
+  New
+  -# %ul
+  -#   -# - @boards.errors.full_messages.each do |message|
+  -#   -#   %li= message
+  -# = form_with(model: @boards.first, local: true, data: { turbo: false } ) do |f|
+  -#   %div
+  -#     = f.label :title, 'アイキャッチ'
+  -#   %div
+  -#     = f.file_field :title
+  -#   %div
+  -#     = f.label :title, 'タイトル'
+  -#   %div
+  -#     = f.text_field :title, class: 'text'
+  -#   %div
+  -#     = f.label :title, '内容'
+  -#   %div
+  -#     = f.text_area :title
+  -#   = f.submit '保存', class: 'btn-primary'
+  
