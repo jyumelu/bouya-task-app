@@ -5,8 +5,9 @@ input, select {
     width: 100%;
     margin: 8px 0px;
     padding: 16px 24px;
-    border: 1px solid #F4F4F4;
+    border: 1px solid #d4d4d4;
     border-radius: 10px;
+    background: #F4F4F4;
   }
 }
 
@@ -20,4 +21,19 @@ input, select {
   left: 0;
   right: 0;
   padding: 16px;
+}
+
+label {
+  font-size: 12px;
+}
+
+textarea {
+  width: 100%;
+  margin: 8px 0px;
+  padding: 8px 8px;
+  min-height: 200px;
+  resize: vertical;
+  border-radius: 10px;
+  border: 1px solid #d4d4d4;
+  background: #F4F4F4;
 }
