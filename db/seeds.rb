@@ -9,3 +9,6 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+Board.create({ title: '新しいTASKです', description: '素晴らしいTASKです、実に素晴らしい' })
+Board.create({ title: 'すごいTASKです', description: 'TASKTASKTASKTASKTASKTASKTASKTASKTASKTASKTASKTASK' })

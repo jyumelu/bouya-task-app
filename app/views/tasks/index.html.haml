@@ -1,24 +1,20 @@
 .container
   %h2 All Boards
 
-  .board
-    .board_title
-      Backets
-      .board_detailActions
-        = image_tag "combined-shape.png"
-    .board_text 
-      text test test test
-    = image_tag "default-avatar.png", class: 'board_avatar'
-  
-  .board
-    .board_title
-      Backets
-      .board_detailActions
-        = image_tag "combined-shape.png"
-    .board_text 
-      text test test test
-    = image_tag "default-avatar.png", class: 'board_avatar'
+  - @boards.each do |board|
+    .board
+      .board_title
+        = board.title
+        .board_detailActions
+          .dropdown
+            = image_tag "combined-shape.png"
+            .dropdown-content.mini
+              = link_to 'Edit', root_path
+              = link_to 'Delete', root_path
+      .board_text 
+        = board.description
+      = image_tag "default-avatar.png", class: 'board_avatar'
 
   .board_add
-    + Add new Borad
+    + Add new Board
 
