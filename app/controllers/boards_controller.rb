@@ -10,13 +10,13 @@ class BoardsController < ApplicationController
   end
 
   def new
-    @board = Board.new
-    # @board = current_user.boards.build
+    # @board = Board.new
+    @board = current_user.boards.build
   end
 
   def create
     # new で入力した form のデータを取得
-    @board = Board.new(board_params)
+    @board = current_user.boards.build(board_params)
     # DB に保存
     if @board.save
       redirect_to boards_path(@board), notice: '保存できたよ'
