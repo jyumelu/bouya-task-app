@@ -1,0 +1,41 @@
+@import './variables';
+
+$board-margin: 20px;
+$avatar-size: 30px;
+$board-radius: 15px;
+
+.board {
+    background: #F4F4F4;
+    margin: $board-margin;
+    border-radius: $board-radius;
+
+    &_title{
+        display: flex;
+        font-size: 30px;
+        padding: $board-margin;
+    }
+
+    &_detailActions {
+        margin: 0 0 0 auto;
+        font-size: 15px;
+    }
+
+    &_text {
+        margin-left: $board-margin;
+    }
+
+    &_avatar {
+        width: $avatar-size;
+        height: $avatar-size;
+        border-radius: 100%;
+        margin: $board-margin;
+    }
+
+    &_add {
+        border: dashed  1px black;
+        margin: $board-margin;
+        border-radius: $board-radius;
+        padding: 60px;
+        text-align: center;
+    }
+}

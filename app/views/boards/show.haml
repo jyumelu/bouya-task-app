@@ -1,0 +1,18 @@
+.container
+  %h2
+    .board
+      .board_title
+        = @board.title
+        .board_detailActions
+      .board_text 
+        = @board.description
+      = image_tag "default-avatar.png", class: 'board_avatar'
+      %div
+        %p username
+        %p 2024/01/01 
+
+    ここらへん託すタスクっぽい
+
+  -# board_add とあるが、task を追加 (Css 適用のため)
+  .board_add
+    + Add new Card
