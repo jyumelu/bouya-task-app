@@ -22,5 +22,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # user と紐づけている
   has_many :boards, dependent: :destroy
+
+  def has_written_board?(board)
+    boards.exists?(id: board.id)
+  end
 end

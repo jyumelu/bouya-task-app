@@ -14,5 +14,9 @@
 #  index_boards_on_user_id  (user_id)
 #
 class Board < ApplicationRecord
+  # user が 複数のboard に紐づいている (user_id)
   belongs_to :user
+  # validates title, description が無いと保存しない
+  validates :title, presence: true
+  validates :description, presence: true
 end

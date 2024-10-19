@@ -26,6 +26,34 @@ class BoardsController < ApplicationController
     end
   end
 
+  def edit
+    # この書き方以外だとセキュリティ的に問題あり
+    # 例
+    # @board = boards.find(params[:id])
+    # だと、他人の記事を書き換えれてしまう
+    # 外部から他人に操作されてはいけないものは 現在のユーザのみ変更を許す
+    @board = current_user.boards.find(params[:id])
+  end
+
+  def update
+    @board = current_user.boards.find(params[:id])
+    if @board.update(board_params)
+      redirect_to board_path(@board), notice: '更新できました'
+    else
+      flash.now[:error] = '更新できませんでした'
+      render :edit
+    end
+  end
+
+  def destroy
+    # @board にしてしまうと、view で表示しているのではとなる (文化的な話)
+    # board = boards.find(params[:id])
+    # だと、他人の記事を書き換えれてしまう
+    board = current_user.boards.find(params[:id])
+    board.destroy!
+    redirect_to root_path, notice: '削除に成功しました'
+  end
+
   private
 
   # DB 保存する前にカラムに値が入っているかチェック
