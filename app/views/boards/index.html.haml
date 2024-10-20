@@ -15,12 +15,8 @@
                   = link_to 'Delete', board_path(board), data: { turbo_method: 'delete', turbo_confirm: '本当によろしいですか？'}
         .board_text 
           = board.description
-        = image_tag board.user.avatar_image, class: 'board_avatar'
-        .board_text
-          %p= board.author_name
-          %p= board.display_created_at
-  = link_to new_board_path do
-    .board_add
-      + Add new Board
-  
-
+        .board_profInfo
+          = image_tag board.user.avatar_image, class: 'board_avatar'
+          .board_profInfo_text
+            %p= board.author_name
+            %p= board.display_created_at

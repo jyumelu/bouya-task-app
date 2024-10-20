@@ -16,6 +16,7 @@
 class Board < ApplicationRecord
   # user が 複数のboard に紐づいている (user_id)
   belongs_to :user
+  has_many :tasks, dependent: :destroy
   # validates title, description が無いと保存しない
   validates :title, presence: true
   validates :description, presence: true

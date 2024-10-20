@@ -1,18 +1,28 @@
 .container
   %h2
-    .board
-      .board_title
-        = @board.title
-        .board_detailActions
-      .board_text 
-        = @board.description
-      = image_tag "default-avatar.png", class: 'board_avatar'
-      %div
-        %p username
-        %p 2024/01/01 
-
-    ここらへん託すタスクっぽい
-
-  -# board_add とあるが、task を追加 (Css 適用のため)
+    = @board.title
+  .board
+    .board_text 
+      = @board.description
+    .board_profInfo
+      = image_tag @board.user.avatar_image, class: 'board_avatar'
+      .board_profInfo_text
+        %p= @board.author_name
+        %p= @board.display_created_at
+  .board
+    - @tasks.each do |task|
+      .board_title 
+        = task.title
+      .board_text
+        = task.summary
+      .board_profInfo
+        = image_tag task.user.avatar_image, class: 'board_avatar'
+        .board_profInfo_text
+          %p= task.author_name
+          %p= task.display_created_at
+        
+        
+      = link_to 'タスクリンク', task_path(task)
+    -# taskが存在するなら、edit card に変更
   .board_add
     + Add new Card

@@ -1,3 +1,11 @@
 .container
-  %h2 task
+  %h2 SHOW タスク詳細
+  .board_title
+    = @board.title
+  .task_title
+    = @task.title
+  .task_summary
+    = @task.summary
+  .task_detail
+    = @task.detail
 
