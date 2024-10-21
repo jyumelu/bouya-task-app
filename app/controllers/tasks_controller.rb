@@ -1,14 +1,10 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_board
-
-  def index
-    # @board = Board.find(params[:id])
-    @tasks = current_user.tasks
-  end
+  before_action :set_board, only: [:new, :create, :edit]
 
   def show
-    @task = Task.all.find_by(id: params[:board_id])
+    # @board.tasks ではなく Task を直接使う
+    @task = Task.find(params[:id])
   end
 
   def new
@@ -40,11 +36,11 @@ class TasksController < ApplicationController
 
   # URL パラメータから board_id を取得して設定
   def set_board
-    @board = current_user.boards.find(params[:board_id])
+    @board = Board.find(params[:board_id])
   end
 
   # DB 保存する前にカラムに値が入っているかチェック
   def task_params
-    params.require(:task).permit(:title, :summary)
+    params.require(:task).permit(:title, :summary, :graphic)
   end
 end
