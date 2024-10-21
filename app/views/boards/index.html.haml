@@ -20,3 +20,6 @@
           .board_profInfo_text
             %p= board.author_name
             %p= board.display_created_at
+  = link_to new_board_path do
+    .board_add
+      + Add New Board

@@ -20,6 +20,10 @@ class Task < ApplicationRecord
   # user が 複数の task に紐づいている (user_id)
   belongs_to :user
   belongs_to :board
+
+  # task に追加する画像を紐づける
+  has_one_attached :graphic
+
   # validates title, description が無いと保存しない
   validates :title, presence: true
   validates :summary, presence: true

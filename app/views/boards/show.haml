@@ -1,28 +1,29 @@
 .container
   %h2
     = @board.title
-  .board
-    .board_text 
-      = @board.description
-    .board_profInfo
-      = image_tag @board.user.avatar_image, class: 'board_avatar'
-      .board_profInfo_text
-        %p= @board.author_name
-        %p= @board.display_created_at
+  -# .board
+  -#   .board_text 
+  -#     = @board.description
+  -#   .board_profInfo
+  -#     = image_tag @board.user.avatar_image, class: 'board_avatar'
+  -#     .board_profInfo_text
+  -#       %p= @board.author_name
+  -#       %p= @board.display_created_at
   .board
     - @tasks.each do |task|
-      .board_title 
-        = task.title
-      .board_text
-        = task.summary
-      .board_profInfo
-        = image_tag task.user.avatar_image, class: 'board_avatar'
-        .board_profInfo_text
-          %p= task.author_name
-          %p= task.display_created_at
-        
-        
-      = link_to 'タスクリンク', task_path(task)
-    -# taskが存在するなら、edit card に変更
-  .board_add
-    + Add new Card
+      = link_to board_task_path(task) do
+        .board_title 
+          = task.title
+        - if task.graphic.attached?
+          .board_graphic 
+            = image_tag task.graphic
+        .board_text
+          = task.summary
+        .board_profInfo
+          = image_tag task.user.avatar_image, class: 'board_avatar'
+          .board_profInfo_text
+            %p= task.author_name
+            %p= task.display_created_at
+  = link_to new_board_task_path(@board) do
+    .board_add
+      + Add new Card
