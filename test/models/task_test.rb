@@ -3,6 +3,7 @@
 # Table name: tasks
 #
 #  id         :bigint           not null, primary key
+#  deadline   :datetime         not null
 #  detail     :text
 #  summary    :text             not null
 #  title      :string           not null

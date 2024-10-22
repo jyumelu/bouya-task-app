@@ -3,11 +3,13 @@
 $board-margin: 20px;
 $avatar-size: 30px;
 $board-radius: 15px;
+$container-padding: 30px;
 
 .board {
   background: #F4F4F4;
   margin: $board-margin;
   border-radius: $board-radius;
+  position: relative;
 
   &_title {
     display: flex;
@@ -29,8 +31,13 @@ $board-radius: 15px;
         display: flex;
         flex-direction: column; // テキストを縦並びに
         margin-left: $board-margin;
+        border-radius: $board-radius;
         font-size: 12px;
       }
+    &_deadline {
+      display: flex;
+      font-size: 15px;
+    }
   }
 
   &_avatar {
@@ -43,11 +50,34 @@ $board-radius: 15px;
     margin-left: $board-margin;
   }
 
+  &_detail {
+    font-size: 25px;
+    padding: $board-margin
+  }
+
   &_add {
     border: dashed 1px black;
     margin: $board-margin;
     border-radius: $board-radius;
     padding: 60px;
     text-align: center;
+  }
+
+  &_graphic {
+    height: 180px;
+    width: auto;
+    position: relative;
+    overflow: hidden;
+    padding: $container-padding * -1 $container-padding * -1 16px;
+    
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      width: 100%;
+    }
   }
 }

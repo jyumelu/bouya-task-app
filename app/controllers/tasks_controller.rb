@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_board, only: [:new, :create, :edit]
+  before_action :set_board, only: [:new, :create, :edit, :update,]
 
   def show
     # @board.tasks ではなく Task を直接使う
@@ -28,8 +28,23 @@ class TasksController < ApplicationController
 
   def edit
     # ログイン中のユーザーとボード情報をセット
-    @task = @board.tasks.build(user: current_user)
+    # @task.user = current_user
+    # @task = @board.tasks.build(user: current_user)
+    # @task.user = current_user
+    @task = Task.find(params[:id])
+  end
+
+  def update
+    # @task.user = current_user
+    # @task = @board.tasks.build(user: current_user)
+    @task = Task.find(params[:id])
     @task.user = current_user
+    if @task.update(task_params)
+      redirect_to board_path(@board), notice: '更新できました'
+    else
+      flash.now[:error] = '更新できませんでした'
+      render :edit
+    end
   end
 
   private
@@ -41,6 +56,6 @@ class TasksController < ApplicationController
 
   # DB 保存する前にカラムに値が入っているかチェック
   def task_params
-    params.require(:task).permit(:title, :summary, :graphic)
+    params.require(:task).permit(:title, :summary, :deadline, :graphic)
   end
 end

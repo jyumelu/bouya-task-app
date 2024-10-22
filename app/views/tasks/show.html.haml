@@ -1,10 +1,29 @@
 .container
-  %h2 SHOW タスク詳細
-  
-  .task_title
-    = @task.title
-  .task_summary
-    = @task.summary
-  .task_detail
-    = @task.detail
+  .board
+    %h2
+      .board_title
+        = @task.title
+        - if current_user.has_written_taks?(@task)
+          .board_detailActions
+            .dropdown
+              = image_tag "combined-shape.png"
+              .dropdown-content.mini
+                = link_to 'Edit', edit_board_task_path(@task)
+                -# = link_to 'Delete', board_task_path(@board, task), data: { turbo_method: 'delete', turbo_confirm: '本当によろしいですか？'}
+    .board_graphic 
+      .img
+        = image_tag @task.graphic
+  .board
+    .board_title
+      = @task.summary
+    .board_detail
+      = @task.detail
+    .board_profInfo
+      = image_tag @task.user.avatar_image, class: 'board_avatar'
+    .board_profInfo_text
+      %p= @task.author_name
+      %p= @task.display_created_at
+    .board_profInfo_text 
+      deadline
+      %p= @task.deadline 
 

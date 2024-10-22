@@ -33,6 +33,10 @@ class User < ApplicationRecord
     boards.exists?(id: board.id)
   end
 
+  def has_written_taks?(task)
+    tasks.exists?(id: task.id)
+  end
+
   def display_name
     # ぼっち演算子(よく使う)
     profile&.nickname || email.split('@').first

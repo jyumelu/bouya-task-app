@@ -1,31 +1,27 @@
 .container
   %h2
     = @board.title
-  -# .board
-  -#   .board_text 
-  -#     = @board.description
-  -#   .board_profInfo
-  -#     = image_tag @board.user.avatar_image, class: 'board_avatar'
-  -#     .board_profInfo_text
-  -#       %p= @board.author_name
-  -#       %p= @board.display_created_at
-  .board
     - @tasks.each do |task|
-      -# ex) boards/12/tasks/2
-      -# boards/12 と tasks/2 の両方を特定するための id が必要
-      = link_to board_task_path(task.board, task) do
-        .board_title 
-          = task.title
-        - if task.graphic.attached?
-          .board_graphic 
-            = image_tag task.graphic
-        .board_text
-          = task.summary
-        .board_profInfo
-          = image_tag task.user.avatar_image, class: 'board_avatar'
-          .board_profInfo_text
-            %p= task.author_name
-            %p= task.display_created_at
+      .board
+        -# ex) boards/12/tasks/2
+        -# boards/12 と tasks/2 の両方を特定するための id が必要
+        = link_to board_task_path(task.board, task) do
+          - if task.graphic.attached?
+            .board_graphic 
+              .img
+                = image_tag task.graphic
+          .board_title 
+            = task.title
+          .board_text
+            = task.summary
+          .board_profInfo
+            = image_tag task.user.avatar_image, class: 'board_avatar'
+            .board_profInfo_text
+              %p= task.author_name
+              %p= task.display_created_at
+            .board_profInfo_text 
+              deadline
+              %p= task.deadline 
   = link_to new_board_task_path(@board) do
     .board_add
       + Add new Card

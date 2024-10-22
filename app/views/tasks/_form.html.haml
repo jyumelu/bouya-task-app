@@ -3,11 +3,15 @@
     - task.errors.full_messages.each do |message|
       %li= message
   %h2 New Card
-  = form_with(model: [@board, task], local: true, data: { turbo: false } ) do |f| 
+  = form_with(model: [@board, @task], local: true, data: { turbo: false } ) do |f| 
     %div
       = f.label :graphic,'image'
     %div
       = f.file_field :graphic
+    %div
+      = f.label :deadline
+    %div
+      = f.datetime_select :deadline, class: 'text'
     %div
       = f.label :title, 'Name'
     %div
