@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_board, only: [:new, :create, :edit, :update,]
+  before_action :set_board
 
   def show
     # @board.tasks ではなく Task を直接使う
@@ -28,16 +28,14 @@ class TasksController < ApplicationController
 
   def edit
     # ログイン中のユーザーとボード情報をセット
+    @task = @board.tasks.find(params[:id])
+    @task.user = current_user
     # @task.user = current_user
-    # @task = @board.tasks.build(user: current_user)
-    # @task.user = current_user
-    @task = Task.find(params[:id])
+    # @task = Task.find(params[:id])
   end
 
   def update
-    # @task.user = current_user
-    # @task = @board.tasks.build(user: current_user)
-    @task = Task.find(params[:id])
+    @task = @board.tasks.find(params[:id])
     @task.user = current_user
     if @task.update(task_params)
       redirect_to board_path(@board), notice: '更新できました'
@@ -45,6 +43,14 @@ class TasksController < ApplicationController
       flash.now[:error] = '更新できませんでした'
       render :edit
     end
+  end
+
+  def destroy
+    task = @board.tasks.find(params[:id])
+    task.user = current_user
+    task.destroy!
+    # redirect_to board_path(@board), notice: '削除に成功しました'
+    redirect_to root_path, notice: '削除に成功しました'
   end
 
   private
