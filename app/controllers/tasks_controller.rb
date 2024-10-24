@@ -5,6 +5,7 @@ class TasksController < ApplicationController
   def show
     # @board.tasks ではなく Task を直接使う
     @task = Task.find(params[:id])
+    @comments = @task.comments
   end
 
   def new
@@ -49,7 +50,7 @@ class TasksController < ApplicationController
     task = @board.tasks.find(params[:id])
     task.user = current_user
     task.destroy!
-    # redirect_to board_path(@board), notice: '削除に成功しました'
+    # redirect_to board_path(@board), notice: '削除に成功しました', status: :see_other
     redirect_to root_path, notice: '削除に成功しました'
   end
 
@@ -62,6 +63,6 @@ class TasksController < ApplicationController
 
   # DB 保存する前にカラムに値が入っているかチェック
   def task_params
-    params.require(:task).permit(:title, :summary, :deadline, :graphic)
+    params.require(:task).permit(:title, :summary, :deadline, :detail, :graphic)
   end
 end
