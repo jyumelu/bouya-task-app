@@ -1,3 +1,4 @@
 -# board は task に board_id に紐づけが必要
 -# form_with がネストされた board_tasks_path を使用して task が board に関連付け
 = render 'form', task: @task, board: @board
+-# = render 'form', task: @task, board: @board, status: :unprocessable_entity

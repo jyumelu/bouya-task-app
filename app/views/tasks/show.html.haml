@@ -26,4 +26,16 @@
     .board_profInfo_text 
       deadline
       %p= @task.deadline 
+.container
+  .board_title 
+    %h2
+      Comment
+  - @comments.each do |comment|
+    .board
+      .board_profInfo
+        = image_tag comment.user.avatar_image, class: 'board_avatar'
+        = comment.content
+  = link_to new_board_task_comment_path(@board,@task) do
+    .board_add 
+      + Add New Comment
 
