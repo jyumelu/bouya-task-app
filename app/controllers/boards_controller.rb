@@ -30,10 +30,10 @@ class BoardsController < ApplicationController
   def edit
     # この書き方以外だとセキュリティ的に問題あり
     # 例
-    @board = boards.find(params[:id])
+    # @board = boards.find(params[:id])
     # だと、他人の記事を書き換えれてしまう
     # 外部から他人に操作されてはいけないものは 現在のユーザのみ変更を許す
-    # @board = current_user.boards.find(params[:id])
+    @board = current_user.boards.find(params[:id])
   end
 
   def update
